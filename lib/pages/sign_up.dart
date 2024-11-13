@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litetrade_app/components/colors/app_colors.dart';
 import 'package:litetrade_app/pages/button.dart';
-import 'package:litetrade_app/pages/date_picker.dart';
 import 'package:litetrade_app/pages/textfield.dart';
 
 class SignUp extends StatefulWidget {
