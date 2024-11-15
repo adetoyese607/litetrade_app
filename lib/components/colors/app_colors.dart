@@ -6,4 +6,5 @@ class AppColor {
   static Color litetradeDarkGrey = const Color.fromRGBO(147, 147, 147, 1);
   static Color litetradeLightGrey = const Color.fromRGBO(247, 247, 249, 1);
   static Color litetradeblack = const Color.fromRGBO(17, 17, 17, 1);
+   static Color litetraeWhite = Colors.white;
 }
