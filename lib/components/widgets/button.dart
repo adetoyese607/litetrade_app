@@ -9,8 +9,8 @@ class Button extends StatelessWidget {
     required this.backgroundcolor,
     required this.text,
     required this.fontsize,
-    required this.textcolor, this.onPressed,
-   
+    required this.textcolor,
+    this.onPressed,
   });
 
   final double width;
@@ -22,15 +22,15 @@ class Button extends StatelessWidget {
   final double fontsize;
   final void Function()? onPressed;
 
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
       height: height,
       child: ElevatedButton(
-        
-          onPressed: onPressed ,
+          onPressed: (route == null || route!.isEmpty) ? onPressed : () {
+            Navigator.of(context).pushNamed('$route');
+          },
           style: ElevatedButton.styleFrom(
               backgroundColor: backgroundcolor,
               elevation: 0,

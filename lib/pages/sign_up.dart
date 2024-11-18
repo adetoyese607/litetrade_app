@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:litetrade_app/components/colors/app_colors.dart';
-import 'package:litetrade_app/pages/button.dart';
-import 'package:litetrade_app/pages/textfield.dart';
+import 'package:litetrade_app/components/widgets/button.dart';
+import 'package:litetrade_app/components/widgets/textfield.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

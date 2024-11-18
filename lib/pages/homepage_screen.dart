@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:litetrade_app/components/buttons/homepage_btn.dart';
-import 'package:litetrade_app/components/buttons/pendingaction_btn.dart';
+import 'package:litetrade_app/components/widgets/homepage_btn.dart';
+import 'package:litetrade_app/components/widgets/pendingaction_btn.dart';
 import 'package:litetrade_app/components/colors/app_colors.dart';
 
 class HomepageScreen extends StatefulWidget {
@@ -31,13 +31,11 @@ class _HomepageScreenState extends State<HomepageScreen> {
                       fontSize: 16,
                       fontWeight: FontWeight.w400),
                 ),
-                Padding(
-                    padding: const EdgeInsets.only(right: 18),
-                    child: Icon(
-                      Icons.notifications_active_outlined,
-                      size: 25,
-                      color: AppColor.colorBlack,
-                    )),
+                Icon(
+                  Icons.notifications_active_outlined,
+                  size: 25,
+                  color: AppColor.colorBlack,
+                ),
               ],
             ),
             const SizedBox(
@@ -226,6 +224,10 @@ class _HomepageScreenState extends State<HomepageScreen> {
                     iconImage: 'assets/dollar.png',
                     text: 'Dollar Card'),
               ],
+            ),
+
+            BottomAppBar(
+              child: Text('Helo'),
             )
           ],
         ),

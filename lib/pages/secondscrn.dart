@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litetrade_app/components/colors/app_colors.dart';
-import 'package:litetrade_app/pages/button.dart';
+import 'package:litetrade_app/components/widgets/button.dart';
 
 class Secondscrn extends StatelessWidget {
   const Secondscrn({super.key});
