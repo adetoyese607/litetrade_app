@@ -11,14 +11,17 @@ class HomepageScreen extends StatefulWidget {
 }
 
 class _HomepageScreenState extends State<HomepageScreen> {
+  bool balToggle = true;
+  int currentNavIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
+      body: Container(
+        // margin: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           scrollDirection: Axis.vertical,
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 80),
           children: [
             // NAME AND NOTIFICATION ICON
             Row(
@@ -63,9 +66,13 @@ class _HomepageScreenState extends State<HomepageScreen> {
                                 color: AppColor.litetraeWhite,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400)),
-                        Icon(
-                          Icons.visibility_off,
-                          color: AppColor.litetraeWhite,
+                        GestureDetector(
+                          onTap: () {
+                           setState(() {
+                              balToggle = !balToggle;
+                           });
+                          },
+                          child: Icon(balToggle ? Icons.visibility_off: Icons.visibility, color: AppColor.litetraeWhite,)
                         ),
                       ],
                     ),
@@ -78,7 +85,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                           color: AppColor.litetraeWhite,
                           fontSize: 24,
                           fontWeight: FontWeight.w500),
-                      '₦50,000.00',
+                     balToggle? '₦50,000.00' : '*******' ,
                       textAlign: TextAlign.left,
                     ))
                   ],
@@ -166,7 +173,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
               shrinkWrap: true,
               crossAxisCount: 4,
               //  mainAxisSpacing: 2,
-              children:const [
+              children: const [
                 QuickActions(
                     backgroundColor: Color.fromRGBO(196, 61, 203, 0.19),
                     iconImage: 'assets/phoneIcon.png',
@@ -174,7 +181,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                 QuickActions(
                     backgroundColor: Color.fromRGBO(28, 207, 220, 0.13),
                     iconImage: 'assets/airtime.png',
-                    text: 'Data' ),
+                    text: 'Data'),
                 QuickActions(
                     backgroundColor: Color.fromRGBO(221, 152, 53, 0.16),
                     iconImage: 'assets/cashIcon.png',
@@ -225,12 +232,59 @@ class _HomepageScreenState extends State<HomepageScreen> {
                     text: 'Dollar Card'),
               ],
             ),
-
-            BottomAppBar(
-              child: Text('Helo'),
-            )
           ],
         ),
+      ),
+      bottomNavigationBar: Container(
+        height: 68,
+
+        // color: Colors.red,
+        child: BottomNavigationBar(
+            backgroundColor: AppColor.litetraeWhite,
+            // enableFeedback:false ,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: AppColor.litetradeBlue,
+            unselectedItemColor: AppColor.litetradeDarkGrey,
+            showUnselectedLabels: true,
+            iconSize: 24,
+            selectedLabelStyle: TextStyle(
+                color: AppColor.litetradeBlue,
+                fontSize: 8,
+                fontWeight: FontWeight.w400),
+            unselectedLabelStyle: TextStyle(
+                // color: AppColor.litetradeBlue,
+                fontSize: 8,
+                fontWeight: FontWeight.w400),
+            // int currentIndex = 0;
+            // unselectedItemColor: AppColor.colorBlack,
+            onTap: (index) {
+              setState(() {
+                currentNavIndex = index;
+              });
+            },
+            currentIndex: currentNavIndex,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_filled),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.card_travel),
+                label: 'Cards',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.currency_bitcoin_rounded),
+                label: 'Crypto',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.history),
+                label: 'History',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Menu',
+              ),
+            ]),
       ),
     );
   }
@@ -261,7 +315,8 @@ class QuickActions extends StatelessWidget {
           height: 11,
         ),
         Text(
-          text, textAlign: TextAlign.center,
+          text,
+          textAlign: TextAlign.center,
           style: TextStyle(
               color: AppColor.colorBlack,
               fontSize: 12,
